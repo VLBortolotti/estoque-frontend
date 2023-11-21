@@ -1,0 +1,49 @@
+body {
+    font-family: "Lato", sans-serif;
+}
+  
+.sidenav {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 50px;
+}
+  
+.sidenav a {
+    padding: 36px 8px 6px 48px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #ffffff;
+    display: block;
+}
+
+.sidenav a:hover {
+    color: rgba(77, 180, 214, 0.7);
+}
+
+.sidenav #userName {
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 0px 8px 60px 10px;
+}
+
+.sidenav #ativo {
+    color: rgb(77, 180, 214);
+}
+
+.main {
+    margin-left: 250px; 
+    font-size: 28px; 
+    padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
