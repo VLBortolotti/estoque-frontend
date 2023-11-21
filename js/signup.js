@@ -70,7 +70,8 @@ entrarBtn.addEventListener('click', () => {
             msg.style.display = 'block'
             msg.style.fontWeight = 'bold'
             msg.innerHTML = data.erro
-            // console.log(`Error: ${data.erro}`)
+            
+            console.log(`Error: ${data.erro}`)
         } 
 
         else if (!('erro' in data) && (data.msg === "ok") && (Object.keys(data.data).length > 0)) {
