@@ -15,7 +15,7 @@ eyeBtn.addEventListener('click', () => {
 entrarBtn.addEventListener('click', () => {
     const userData = {
         email: email.value,
-        password: senha.value,
+        password: senha.value
     }
 
     console.log(userData)
@@ -31,8 +31,6 @@ entrarBtn.addEventListener('click', () => {
     })
     .then(response => response.json())
     .then(data => {
-        console.log(data)
-
         if ('erro' in data) {
             msg.style.color = '#ff0000'
             msg.style.backgroundColor = '#ffbbbb'
@@ -51,6 +49,15 @@ entrarBtn.addEventListener('click', () => {
             msg.innerHTML = 'Login feito com sucesso'
 
             console.log(`Data: ${JSON.stringify(data.data, null, 2)}`)
+
+            const saveUserData = {
+                email: email.value,
+                password: senha.value,
+                token: data.data.token
+            }
+
+            localStorage.setItem('userData', JSON.stringify(saveUserData))
+            // console.log(JSON.parse(localStorage.getItem('userData')))
         }
     })
     .catch( (error) => {
