@@ -51,8 +51,9 @@ entrarBtn.addEventListener('click', () => {
             console.log(`Data: ${JSON.stringify(data.data, null, 2)}`)
 
             const saveUserData = {
-                email: email.value,
-                password: senha.value,
+                name: data.data.name,
+                email: data.data.email,
+                id: data.data.id,
                 token: data.data.token
             }
 

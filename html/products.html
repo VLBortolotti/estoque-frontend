@@ -2,24 +2,51 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../css/products.css">
 </head>
 
 <body>
     <div class="sidenav">
-        <p id="userName">Vítor Laco</p>
-        <a href="#about" id="ativo">Produtos</a>
-        <a href="#services">Vendas</a>
-        <a href="#clients">Usuários</a>
+        <a id="userName"></a>
+
+        <button class="dropdown-btn">Produtos 
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-container">
+            <a href="#">Cadastrar</a>
+            <a href="#">Listar</a>
+            <a href="#">Editar</a>
+        </div>
+
+        <button class="dropdown-btn">Vendas
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-container">
+            <a href="#">Cadastrar</a>
+            <a href="#">Listar</a>
+        </div>
+
+        <button class="dropdown-btn">Usuários
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-container">
+            <a href="#">Perfil</a>
+            <a href="#">Listar</a>
+        </div>
+
+        <a id="sair">Sair</a>
+
     </div>
 
     <div class="main">
-        <h2>Sidebar</h2>
+        <h2>Sidebar Dropdown</h2>
+        <p>Click on the dropdown button to open the dropdown menu inside the side navigation.</p>
         <p>This sidebar is of full height (100%) and always shown.</p>
-        <p>Scroll down the page to see the result.</p>
-        <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
+        <p>Some random text..</p>
     </div>
-    
-    <script src="../js/products.js"></script>
+
+<script src="../js/products.js"></script>
+
 </body>
 </html> 
