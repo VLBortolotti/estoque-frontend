@@ -1,6 +1,10 @@
 let dropdown = document.getElementsByClassName("dropdown-btn");
 let i;
 
+let produtosContainer = document.querySelector('.produtos-container')
+produtosContainer.classList.toggle("active")
+produtosContainer.nextElementSibling.style.display = "block"
+
 for (i = 0; i < dropdown.length; i++) {
   dropdown[i].addEventListener("click", function() {
     this.classList.toggle("active");
@@ -16,3 +20,5 @@ for (i = 0; i < dropdown.length; i++) {
 userData     = JSON.parse(localStorage.getItem('userData'))
 let userName = document.querySelector("#userName")
 userName.innerHTML = userData.name
+
+
