@@ -2,9 +2,14 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+    <link rel="icon" type="image/x-icon" href="../img/earth.png">
     <link rel="stylesheet" href="../css/registerProduct.css">
     <title>Cadastrar Produto</title>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="../js/registerProduct.js" defer></script>
 </head>
 
 <body>
@@ -42,12 +47,31 @@
 
     <div class="main">
         <h2>Cadastrar Produto</h2>
-        <p>Click on the dropdown button to open the dropdown menu inside the side navigation.</p>
-        <p>This sidebar is of full height (100%) and always shown.</p>
-        <p>Some random text..</p>
+        
+        <p id="msg"></p>
+        <div id="registerProduct-form">
+            <div id="form">
+                <label for="name">Nome</label>
+                <input type="text" id="name" name="name" placeholder="Nome do produto">
+            
+                <label for="description">Descrição</label>
+                <input type="text" id="description" name="description" placeholder="Breve descrição do produto">
+
+                <label for="price">Preço</label>
+                <input type="text" id="price" name="price" placeholder="Preço de venda da unidade do produto (apenas o valor)">
+            
+                <label for="quantidade">Quantidade</label>
+                <input type="text" id="quantity" name="quantity" placeholder="Quantidade de unidades do produto em estoque">
+            
+                <label for="category">Categoria</label>
+                <input type="text" id="category" name="category" placeholder="Categoria do produto (ex: camiseta)">
+
+                <input type="submit" id="submit-btn" value="Cadastrar Produto">
+            </div>
+        </div>
+        
     </div>
 
-<script src="../js/registerProduct.js"></script>
 
 </body>
 </html> 
