@@ -58,6 +58,11 @@ entrarBtn.addEventListener('click', () => {
             }
 
             localStorage.setItem('userData', JSON.stringify(saveUserData))
+
+            setTimeout(() => {
+                window.location.href = "../html/registerProduct.html"
+            }, 1000)
+
             // console.log(JSON.parse(localStorage.getItem('userData')))
         }
     })

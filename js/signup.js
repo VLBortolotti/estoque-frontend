@@ -82,6 +82,10 @@ entrarBtn.addEventListener('click', () => {
             msg.innerHTML = 'Cadastrado com sucesso'
 
             console.log(`Data: ${JSON.stringify(data.data, null, 2)}`)
+
+            setTimeout(() => {
+                window.location.href = "../html/signin.html"
+            }, 1000)
         }
     })
     .catch( (error) => {
