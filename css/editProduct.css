@@ -1,0 +1,122 @@
+body {
+    font-family: "Lato", sans-serif;
+}
+
+/* Sidenav */
+
+.sidenav {
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+.sidenav a, .dropdown-btn {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #818181;
+    display: block;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    outline: none;
+}
+
+.sidenav a:hover, .dropdown-btn:hover {
+    color: #f1f1f1;
+}
+
+#paginaAtiva {
+    color: #f1f1f1;
+}
+
+.sidenav #userName {
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+.sidenav #sair {
+    margin-top: 20px;
+}
+
+.main {
+    margin-left: 200px;
+    font-size: 20px; 
+    padding: 0px 10px;
+}
+
+.main h2 {
+    text-align: center;
+}
+
+.active {
+    background-color: #272262;
+    color: white;
+}
+
+.dropdown-container {
+    display: none;
+    background-color: #262626;
+    padding-left: 8px;
+}
+
+.fa-caret-down {
+    float: right;
+    padding-right: 8px;
+}
+
+/* Register Product Form */
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    display: block;
+    outline: none;
+}
+
+input[type=submit] {
+    width: 100%;
+    background-color: #272262;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    font-size: 20px;
+    outline: none;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: rgba(39, 34, 98, 0.9);  
+}
+
+#registerProduct-form {
+    display: flex;
+    justify-content: center;
+}
+
+#registerProduct-form #form {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    width: 100%;
+}
+
+/* Responsiveness */
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}

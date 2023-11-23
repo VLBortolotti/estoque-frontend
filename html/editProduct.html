@@ -5,8 +5,8 @@
     <link rel="icon" type="image/x-icon" href="../img/earth.png">
     <link rel="stylesheet" href="../css/registerProduct.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Cadastrar Produto</title>
-    <script src="../js/registerProduct.js" defer></script>
+    <title>Editar Produto</title>
+    <script src="../js/editProduct.js" defer></script>
 </head>
 
 <body>
@@ -17,9 +17,9 @@
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-container">
-            <a href="#" id="paginaAtiva">Cadastrar</a>
+            <a href="./registerProduct.html">Cadastrar</a>
             <a href="./listProducts.html">Listar</a>
-            <a href="./editProduct.html">Editar</a>
+            <a href="#" id="paginaAtiva">Editar</a>
         </div>
 
         <button class="dropdown-btn">Vendas
@@ -43,29 +43,31 @@
     </div>
 
     <div class="main">
-        <h2>Cadastrar Produto</h2>
+        <h2>Editar Produto</h2>
         
         <p id="msg"></p>
-        <div id="registerProduct-form">
+        <div id="editProduct-form">
             <div id="form">
-                <label for="name">Nome</label>
-                <input type="text" id="name" name="name" placeholder="Nome do produto">
+                <label for="identificador">Identificador</label>
+                <input type="text" id="productId" name="identificador" placeholder="Identificador do produto">
             
-                <label for="description">Descrição</label>
-                <input type="text" id="description" name="description" placeholder="Breve descrição do produto">
+                <label for="fieldInput">Campo</label>
+                <select id="fieldInput" name="fieldInput">
+                    <option value="name">Nome</option>
+                    <option value="description">Descrição</option>
+                    <option value="price">Preço</option>
+                    <option value="quantity">Quantidade</option>
+                    <option value="category">Categoria</option>
+                </select>
 
-                <label for="price">Preço</label>
-                <input type="text" id="price" name="price" placeholder="Preço de venda da unidade do produto (apenas o valor)">
-            
-                <label for="quantidade">Quantidade</label>
-                <input type="text" id="quantity" name="quantity" placeholder="Quantidade de unidades do produto em estoque">
-            
-                <label for="category">Categoria</label>
-                <input type="text" id="category" name="category" placeholder="Categoria do produto (ex: camiseta)">
+                <label for="value">Valor</label>
+                <input type="text" id="valueInput" name="value" placeholder="Valor que desejas alterar (ex: roupa)">
 
-                <input type="submit" id="submit-btn" value="Cadastrar Produto">
+                <input type="submit" id="submit-btn" value="Editar Produto">
             </div>
         </div>
+
+        <div id="tabela"></div>
         
     </div>
 
