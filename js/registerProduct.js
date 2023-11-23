@@ -44,34 +44,7 @@ submitBtn.addEventListener('click', () => {
 
   productDataJson = JSON.stringify(productData)
 
-
-  console.log(`productData: ${productDataJson}\nbtn: ${submitBtn}`)
-
-
-  // console.log('Product Data:', productData);
-  // console.log('ProductData JSON: ', productDataJson)
-
   const apiUrl = 'http://localhost:3000/products';
-
-  let myHeaders = new Headers();
-  myHeaders.append("Content-Type", "application/json");
-
-  let requestOptions = {
-    method: 'POST',
-    headers: myHeaders,
-    body: productDataJson,
-    redirect: 'follow'
-  };
-
-  // fetch("http://localhost:3000/products", requestOptions)
-  // .then(response => {
-  //   if (response.ok){
-  //     response.json().then(json => {
-  //       console.log(json)
-  //     })
-  //   }
-  // })
-  // .catch(error => console.log('error: ', error))
 
   fetch(apiUrl, {
     method: 'POST',
@@ -80,8 +53,33 @@ submitBtn.addEventListener('click', () => {
     },
     body: productDataJson
   })
-  .then(response => response.json())
-  .then(data => console.log(`data: ${JSON.stringify(data)}`))
-  .catch((error) => console.error(`Fetch error: ${error}`))
+  .then(response => {
+    return response.json()
+  })
+  .then(data => {
+    if ('erro' in data) {
+      msg.style.color = '#ff0000'
+      msg.style.backgroundColor = '#ffbbbb'
+      msg.style.display = 'block'
+      msg.style.fontWeight = 'bold'
+      msg.style.padding = '20px'
+      msg.innerHTML = data.erro
+      
+      console.log(`Error: ${data.erro}`)
+    } 
 
+    else if (!('erro' in data) && (data.msg === "ok") && (Object.keys(data.data).length > 0)) {
+      msg.style.color = '#008000'
+      msg.style.backgroundColor = '#b0e57c'
+      msg.style.display = 'block'
+      msg.style.fontWeight = 'bold'
+      msg.style.padding = '20px'
+      msg.innerHTML = 'Cadastrado com sucesso'
+
+      console.log(`Data: ${JSON.stringify(data.data, null, 2)}`)
+    }
+  })
+  .catch((error) => {
+    console.error(`Fetch error: ${error}`)
+  })
 });
