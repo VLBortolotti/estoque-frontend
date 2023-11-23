@@ -43,6 +43,25 @@
 
     <div class="main">
         <h2>Lista de Produtos</h2>
+        
+        <div id="filter-search">
+            <label for="key-search">Buscar pela chave</label>
+            <select id="key-search" name="key-search">
+                <option value="">Todos</option>
+                <option value="_id">Identificador</option>
+                <option value="name">Nome</option>
+                <option value="description">Descrição</option>
+                <option value="price">Preço</option>
+                <option value="quantity">Quantidade</option>
+                <option value="category">Categoria</option>
+            </select>
+
+            <label for="input-search">com valor</label>
+            <input type="text" id="input-search" placeholder="valor (em branco para buscar todos)">
+
+            <button id="btn-search">Buscar</button>
+        </div>
+        
         <div id="tabela"></div>
     </div>
 

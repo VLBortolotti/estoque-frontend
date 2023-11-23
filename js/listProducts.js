@@ -24,52 +24,78 @@ userData     = JSON.parse(localStorage.getItem('userData'))
 let userName = document.querySelector("#userName")
 userName.innerHTML = userData.name
 
+// Verificando qual busca sera realizada
+const searchBtn   = document.querySelector('#btn-search')
+const searchKey   = document.querySelector('#key-search')
+const searchValue = document.querySelector('#input-search') 
+
 // Pegando dados do form dos produtos e populando a tabela (no HTML)
-const apiUrl = 'http://localhost:3000/products' 
+const apiUrl = 'http://localhost:3000/products/filter/' 
 const table  = document.querySelector('#tabela')
 
-fetch(apiUrl, {
-  method: 'GET',
-  headers: {
-    'Content-Type': 'application/json'
+searchBtn.addEventListener('click', () => {
+  let filterData = {
+    key: searchKey.value,
+    value: searchValue.value
   }
-})
-.then(response => response.json())
-.then( (data) => {
-  console.log(data.data)
 
-  const tableHeader = `
-      <table> 
-        <tr>
-          <th>Identificador</th>
-          <th>Nome</th>
-          <th>Descrição</th>
-          <th>Preço</th>
-          <th>Quantidade</th>
-          <th>Categoria</th>
-        </tr>
-    `
+  let filterDataJson = JSON.stringify(filterData)
 
-  let   tableContent = ``
-  const tableFooter  = `</table>`
+  fetch(apiUrl, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    }, 
+    body: filterDataJson
+  })
+  .then(response => response.json())
+  .then( (data) => {
+    const tableHeader = `
+          <table> 
+            <tr>
+              <th>Identificador</th>
+              <th>Nome</th>
+              <th>Descrição</th>
+              <th>Preço</th>
+              <th>Quantidade</th>
+              <th>Categoria</th>
+            </tr>
+        `
 
-  data.data.forEach(product => {
+    let   tableContent = ``
+    const tableFooter  = `</table>`
+
+    if (data.data.length >= 1) {
+      data.data.forEach(product => {
+          tableContent += `
+            <tr>
+              <td>${product._id}</td>
+              <td>${product.name}</td>
+              <td>${product.description}</td>
+              <td>${product.price}</td>
+              <td>${product.quantity}</td>
+              <td>${product.category}</td>
+            </tr>
+        `
+      })
+      
+    } else {
       tableContent += `
         <tr>
-          <td>${product._id}</td>
-          <td>${product.name}</td>
-          <td>${product.description}</td>
-          <td>${product.price}</td>
-          <td>${product.quantity}</td>
-          <td>${product.category}</td>
+          <td>Nada</td>
+          <td>Nada</td>
+          <td>Nada</td>
+          <td>Nada</td>
+          <td>Nada</td>
+          <td>Nada</td>
         </tr>
-    `
+      `
+    }
+      
+    table.innerHTML = tableHeader + tableContent + tableFooter
   })
-  
-  table.innerHTML = tableHeader + tableContent + tableFooter
-  
-})
-.catch((error) => {
-  console.log(`Error: ${error}`)
-})
+  .catch((error) => {
+    console.log(`Error: ${error}`)
+  })
 
+})
