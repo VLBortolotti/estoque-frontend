@@ -2,6 +2,7 @@ body {
     font-family: "Lato", sans-serif;
 }
 
+/* Sidenav */
 .sidenav {
     height: 100%;
     width: 200px;
@@ -49,6 +50,7 @@ body {
     margin-top: 20px;
 }
 
+/* Actual content of the page */
 .main {
     margin-left: 200px;
     font-size: 20px; 
@@ -73,6 +75,25 @@ body {
 .fa-caret-down {
     float: right;
     padding-right: 8px;
+}
+
+/* Table of products */
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 50px;
+}
+  
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 20px;
+    border: 1px solid black;
+}
+  
+tr:nth-child(even) {
+    background-color: #dddddd;
 }
 
 @media screen and (max-height: 450px) {
