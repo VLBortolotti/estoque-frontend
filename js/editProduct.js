@@ -24,6 +24,14 @@ userData     = JSON.parse(localStorage.getItem('userData'))
 let userName = document.querySelector("#userName")
 userName.innerHTML = userData.name
 
+// Saindo da página
+let sairBtn = document.querySelector('#sair')
+sairBtn.addEventListener('click', () => {
+    console.log('Sair da página')
+    localStorage.clear()
+    window.location.href = '../html/signin.html'
+})
+
 // Verificando qual busca sera realizada
 const productId  = document.querySelector('#productId')
 const fieldInput = document.querySelector('#fieldInput')
