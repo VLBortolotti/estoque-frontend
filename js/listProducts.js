@@ -32,6 +32,15 @@ sairBtn.addEventListener('click', () => {
     window.location.href = '../html/signin.html'
 })
 
+// Mostrando qual pagina esta ativa
+function activePage(pageNumber) {
+  const currentPageDiv = document.querySelector('#currentPage')
+  
+  // currentPageDiv.innerHTML = `Página: ${element.innerHTML}`
+  currentPageDiv.innerHTML = `Página: ${pageNumber}`
+}
+
+
 // Verificando qual busca sera realizada
 const searchBtn   = document.querySelector('#btn-search')
 const searchKey   = document.querySelector('#key-search')
@@ -42,8 +51,6 @@ const apiUrl = 'http://localhost:3000/products/filter/'
 const table  = document.querySelector('#tabela')
 
 function renderTable(pageCount) {
-  console.log('aquii')
-
   let filterData = {
     key: searchKey.value,
     value: searchValue.value
@@ -131,23 +138,21 @@ function renderTable(pageCount) {
     table.innerHTML = tableHeader + tableContent + tableFooter
 
     paginationStart = `
-      <p onClick="renderTable(0)">0</p>
+      <p onClick="renderTable(0);activePage(0)">0</p>
     `
-    // <p class="active" onClick="renderTable(0)">0</p>
 
     paginationCount = Math.ceil((data.data.length) / 5) - 1  
 
     let paginationContent = (paginationCount) => {
       let pages = ''
       for (let i = 0; i < paginationCount; i++) {
-        pages += `<p onClick="renderTable(${i+1})">${i + 1}</p>`
+        pages += `<p onClick="renderTable(${i+1});activePage(${i+1})">${i + 1}</p>`
       }
 
       return pages
     }
 
     pagination.innerHTML = paginationStart + paginationContent(paginationCount)
-    
   })
   .catch((error) => {
     console.log(`Error: ${error}`)
@@ -157,4 +162,5 @@ function renderTable(pageCount) {
 
 searchBtn.addEventListener('click', function () {
   renderTable(0);
+  activePage(0);
 });
