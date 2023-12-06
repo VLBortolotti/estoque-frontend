@@ -41,7 +41,7 @@ const searchValue = document.querySelector('#input-search')
 const apiUrl = 'http://localhost:3000/products/filter/' 
 const table  = document.querySelector('#tabela')
 
-searchBtn.addEventListener('click', () => {
+function renderTable(pageCount) {
   let filterData = {
     key: searchKey.value,
     value: searchValue.value
@@ -58,6 +58,8 @@ searchBtn.addEventListener('click', () => {
   })
   .then(response => response.json())
   .then( (data) => {
+    const pagination = document.querySelector('.pagination')
+
     const tableHeader = `
           <table> 
             <tr>
@@ -73,8 +75,13 @@ searchBtn.addEventListener('click', () => {
     let   tableContent = ``
     const tableFooter  = `</table>`
 
+    console.log(`data.data: ${data.data.length}`)
+
     if (data.data.length >= 1) {
-      data.data.forEach(product => {
+
+      if (pageCount == 0) {
+        let firstFiveProducts = data.data.slice(0, 5)
+        firstFiveProducts.forEach(product => {
           tableContent += `
             <tr>
               <td>${product._id}</td>
@@ -84,9 +91,25 @@ searchBtn.addEventListener('click', () => {
               <td>${product.quantity}</td>
               <td>${product.category}</td>
             </tr>
-        `
-      })
-      
+          `
+        })
+        
+      } else { 
+        let firstFiveProducts = data.data.slice(pageCount*5, (pageCount*5) + 5) 
+        firstFiveProducts.forEach(product => {
+          tableContent += `
+            <tr>
+              <td>${product._id}</td>
+              <td>${product.name}</td>
+              <td>${product.description}</td>
+              <td>${product.price}</td>
+              <td>${product.quantity}</td>
+              <td>${product.category}</td>
+            </tr>
+          `
+        })
+      }
+    
     } else {
       tableContent += `
         <tr>
@@ -101,9 +124,31 @@ searchBtn.addEventListener('click', () => {
     }
       
     table.innerHTML = tableHeader + tableContent + tableFooter
+
+    paginationStart = `
+      <a href="#">&laquo;</a>
+      <a href="#" class="active" onClick="renderTable(0)">0</a>
+    `
+    paginationEnd = `<a href="#">&raquo;</a>`
+
+    paginationCount = Math.ceil((data.data.length) / 5) - 1  
+
+    let paginationContent = (paginationCount) => {
+      let pages = ''
+      for (let i = 0; i < paginationCount; i++) {
+        pages += `<a href="#" onClick="renderTable(${i+1})">${i + 1}</a>`
+      }
+
+      return pages
+    }
+
+    pagination.innerHTML = paginationStart + paginationContent(paginationCount) + paginationEnd
+  
   })
   .catch((error) => {
     console.log(`Error: ${error}`)
   })
 
-})
+}
+
+searchBtn.addEventListener('click', renderTable(0, 5))
