@@ -42,12 +42,16 @@ const apiUrl = 'http://localhost:3000/products/filter/'
 const table  = document.querySelector('#tabela')
 
 function renderTable(pageCount) {
+  console.log('aquii')
+
   let filterData = {
     key: searchKey.value,
     value: searchValue.value
   }
 
   let filterDataJson = JSON.stringify(filterData)
+
+  console.log(filterDataJson)
 
   fetch(apiUrl, {
     method: 'POST',
@@ -58,6 +62,7 @@ function renderTable(pageCount) {
   })
   .then(response => response.json())
   .then( (data) => {
+    console.log('AQUI NA RENDER')
     const pagination = document.querySelector('.pagination')
 
     const tableHeader = `
@@ -126,24 +131,23 @@ function renderTable(pageCount) {
     table.innerHTML = tableHeader + tableContent + tableFooter
 
     paginationStart = `
-      <a href="#">&laquo;</a>
-      <a href="#" class="active" onClick="renderTable(0)">0</a>
+      <p onClick="renderTable(0)">0</p>
     `
-    paginationEnd = `<a href="#">&raquo;</a>`
+    // <p class="active" onClick="renderTable(0)">0</p>
 
     paginationCount = Math.ceil((data.data.length) / 5) - 1  
 
     let paginationContent = (paginationCount) => {
       let pages = ''
       for (let i = 0; i < paginationCount; i++) {
-        pages += `<a href="#" onClick="renderTable(${i+1})">${i + 1}</a>`
+        pages += `<p onClick="renderTable(${i+1})">${i + 1}</p>`
       }
 
       return pages
     }
 
-    pagination.innerHTML = paginationStart + paginationContent(paginationCount) + paginationEnd
-  
+    pagination.innerHTML = paginationStart + paginationContent(paginationCount)
+    
   })
   .catch((error) => {
     console.log(`Error: ${error}`)
@@ -151,4 +155,6 @@ function renderTable(pageCount) {
 
 }
 
-searchBtn.addEventListener('click', renderTable(0, 5))
+searchBtn.addEventListener('click', function () {
+  renderTable(0);
+});

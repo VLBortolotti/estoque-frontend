@@ -133,20 +133,21 @@ tr:nth-child(even) {
     justify-content: center;
 }
 
-.pagination a {
+.pagination p {
     color: black;
     float: left;
     padding: 8px 16px;
     text-decoration: none;
+    cursor: pointer;
 }
 
-.pagination a.active {
+.pagination p.active {
     background-color: #272262;
     color: white;
     border-radius: 5px; 
 }
 
-.pagination a:hover:not(.active) {
+.pagination p:hover:not(.active) {
     background-color: #ddd;
     border-radius: 5px;
 }
