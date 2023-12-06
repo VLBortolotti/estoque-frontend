@@ -69,7 +69,6 @@ function renderTable(pageCount) {
   })
   .then(response => response.json())
   .then( (data) => {
-    console.log('AQUI NA RENDER')
     const pagination = document.querySelector('.pagination')
 
     const tableHeader = `
@@ -87,10 +86,7 @@ function renderTable(pageCount) {
     let   tableContent = ``
     const tableFooter  = `</table>`
 
-    console.log(`data.data: ${data.data.length}`)
-
     if (data.data.length >= 1) {
-
       if (pageCount == 0) {
         let firstFiveProducts = data.data.slice(0, 5)
         firstFiveProducts.forEach(product => {
