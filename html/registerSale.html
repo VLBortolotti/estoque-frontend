@@ -12,16 +12,16 @@
     <div class="sidenav">
         <a id="userName"></a>
 
-        <button class="dropdown-btn produtos-container">Produtos 
+        <button class="dropdown-btn">Produtos 
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-container">
-            <a href="#">Cadastrar</a>
+            <a href="./registerProduct.html">Cadastrar</a>
             <a href="./listProducts.html">Listar</a>
             <a href="./editProduct.html">Editar</a>
         </div>
 
-        <button class="dropdown-btn">Vendas
+        <button class="dropdown-btn vendas-container">Vendas
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-container">
@@ -42,34 +42,23 @@
     </div>
 
     <div class="main">
-        <h2>Cadastrar Produto</h2>
+        <h2>Cadastrar Venda</h2>
         
         <p id="msg"></p>
         <div id="registerProduct-form">
             <div id="form">
-                <label for="name">Nome</label>
-                <input type="text" id="name" name="name" placeholder="Nome do produto">
-            
-                <label for="description">Descrição</label>
-                <input type="text" id="description" name="description" placeholder="Breve descrição do produto">
+                <label for="productId">Identificador do produto</label>
+                <input type="text" id="productId" name="productId" placeholder="Identificador do produto">
 
-                <label for="price">Preço</label>
-                <input type="text" id="price" name="price" placeholder="Preço de venda da unidade do produto (apenas o valor)">
-            
                 <label for="quantidade">Quantidade</label>
                 <input type="text" id="quantity" name="quantity" placeholder="Quantidade de unidades do produto em estoque">
-            
-                <label for="category">Categoria</label>
-                <input type="text" id="category" name="category" placeholder="Categoria do produto (ex: camiseta)">
 
-                <input type="submit" id="submit-btn" value="Cadastrar Produto">
+                <input type="submit" id="submit-btn" value="Cadastrar Venda">
             </div>
         </div>
         
     </div>
 
-<script src="../js/sidenav.js"></script>
-<script src="../js/renderTable.js"></script>
-<script src="../js/registerProduct.js" defer></script>
+<script src="../js/registerSale.js" defer></script>
 </body>
 </html> 

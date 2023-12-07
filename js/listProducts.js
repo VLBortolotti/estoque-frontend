@@ -32,8 +32,6 @@ sairBtn.addEventListener('click', () => {
     window.location.href = '../html/signin.html'
 })
 
-
-
 // Mostrando qual pagina esta ativa
 function activePage(pageNumber) {
   const currentPageDiv = document.querySelector('#currentPage')
