@@ -5,7 +5,7 @@
     <link rel="icon" type="image/x-icon" href="../img/earth.png">
     <link rel="stylesheet" href="../css/registerProduct.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Cadastrar Venda</title>
+    <title>Cadastrar Compra</title>
 </head>
 
 <body>
@@ -16,11 +16,11 @@
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-container">
-            <a href="./registerPurchase.html">Cadastrar</a>
+            <a href="./registerPurchase.html" id="paginaAtiva">Cadastrar</a>
             <a href="./listPurchases.html">Listar</a>
         </div>
 
-        <button class="dropdown-btn">Produtos 
+        <button class="dropdown-btn produtos-container">Produtos 
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-container">
@@ -29,11 +29,11 @@
             <a href="./editProduct.html">Editar</a>
         </div>
 
-        <button class="dropdown-btn vendas-container">Vendas
+        <button class="dropdown-btn">Vendas
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-container">
-            <a href="./registerSale.html" id="paginaAtiva">Cadastrar</a>
+            <a href="./registerSale.html">Cadastrar</a>
             <a href="./listSales.html">Listar</a>
         </div>
 
@@ -50,7 +50,7 @@
     </div>
 
     <div class="main">
-        <h2>Cadastrar Venda</h2>
+        <h2>Cadastrar Compras</h2>
         
         <p id="msg"></p>
         <div id="registerProduct-form">
@@ -61,12 +61,18 @@
                 <label for="quantidade">Quantidade</label>
                 <input type="text" id="quantity" name="quantity" placeholder="Quantidade de unidades do produto em estoque">
 
+                <label for="unitPrice">Preço unitário</label>
+                <input type="text" id="unitPrice" name="unitPrice" placeholder="Preço unitário do produto">
+
+                <label for="description">Descrição</label>
+                <input type="text" id="description" name="description" placeholder="Descrição da compra do produto">
+                
                 <input type="submit" id="submit-btn" value="Cadastrar Venda">
             </div>
         </div>
         
     </div>
 
-<script src="../js/registerSale.js" defer></script>
+<script src="../js/registerPurchase.js" defer></script>
 </body>
 </html> 
