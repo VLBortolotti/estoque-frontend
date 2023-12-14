@@ -73,7 +73,6 @@ function renderTable(pageCount, apiUrl) {
             <tr>
               <th>Venda id</th>
               <th>Produto id</th>
-              <th>Categoria</th>
               <th>Preço total</th>
               <th>Quantidade</th> 
               <th>Data</th>
@@ -87,14 +86,14 @@ function renderTable(pageCount, apiUrl) {
       if (pageCount == 0) {
         let firstFiveProducts = data.data.slice(0, 5)
         firstFiveProducts.forEach(product => {
+          let dateOfSale = product.date.split('T')
           tableContent += `
             <tr>
               <td>${product._id}</td>
               <td>${product.productId}</td>
-              <td>${product.productCategory}</td>
               <td>${product.total_price}</td>
               <td>${product.quantity}</td>
-              <td>${product.date}</td>
+              <td>${dateOfSale[0]}</td>
             </tr>
           `
         })
