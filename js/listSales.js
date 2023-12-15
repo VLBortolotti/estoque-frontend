@@ -101,14 +101,14 @@ function renderTable(pageCount, apiUrl) {
       } else { 
         let firstFiveProducts = data.data.slice(pageCount*5, (pageCount*5) + 5) 
         firstFiveProducts.forEach(product => {
+          let dateOfSale = product.date.split('T')
           tableContent += `
             <tr>
                 <td>${product._id}</td>
                 <td>${product.productId}</td>
-                <td>${product.category}</td>
                 <td>${product.total_price}</td>
                 <td>${product.quantity}</td>
-                <td>${product.date}</td>
+                <td>${dateOfSale[0]}</td>
             </tr>
           `
         })
@@ -122,7 +122,6 @@ function renderTable(pageCount, apiUrl) {
           <th>Nada</th>
           <th>Nada</th>
           <th>Nada</th> 
-          <th>Nada</th>
         </tr>
       `
     }

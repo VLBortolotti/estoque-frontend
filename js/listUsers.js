@@ -2,9 +2,9 @@
 let dropdown = document.getElementsByClassName("dropdown-btn");
 let i;
 
-let comprasContainer = document.querySelector('.compras-container')
-comprasContainer.classList.toggle("active")
-comprasContainer.nextElementSibling.style.display = "block"
+let usuariosContainer = document.querySelector('.usuarios-container')
+usuariosContainer.classList.toggle("active")
+usuariosContainer.nextElementSibling.style.display = "block"
 
 // Funcionalidade de dropwdown na sidenav
 for (i = 0; i < dropdown.length; i++) {
@@ -45,7 +45,7 @@ const searchKey   = document.querySelector('#key-search')
 const searchValue = document.querySelector('#input-search') 
 
 // Pegando dados do form dos produtos e populando a tabela (no HTML)
-const apiUrl = 'http://localhost:3000/purchases/filter/' 
+const apiUrl = 'http://localhost:3000/users/filter' 
 const table  = document.querySelector('#tabela')
 
 function renderTable(pageCount, apiUrl) {
@@ -60,22 +60,20 @@ function renderTable(pageCount, apiUrl) {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
-    }, 
+    },
     body: filterDataJson
   })
   .then(response => response.json())
   .then( (data) => {
+    console.log(`data: ${JSON.stringify(data, null, 2)}`)
     const pagination = document.querySelector('.pagination')
 
     const tableHeader = `
           <table> 
             <tr>
-              <th>Compra id</th>
-              <th>Produto id</th>
-              <th>Preço unitário</th>
-              <th>Quantidade</th>
-              <th>Preço total</th>
-              <th>Descrição</th>
+              <th>Identificador</th>
+              <th>Nome</th>
+              <th>Email</th>
             </tr>
         `
 
@@ -89,11 +87,8 @@ function renderTable(pageCount, apiUrl) {
           tableContent += `
             <tr>
               <td>${product._id}</td>
-              <td>${product.productId}</td>
-              <td>${product.unitPrice}</td>
-              <td>${product.quantity}</td>
-              <td>${product.totalPrice}</td>
-              <td>${product.description}</td>
+              <td>${product.name}</td>
+              <td>${product.email}</td>
             </tr>
           `
         })
@@ -103,12 +98,9 @@ function renderTable(pageCount, apiUrl) {
         firstFiveProducts.forEach(product => {
           tableContent += `
             <tr>
-                <td>${product._id}</td>
-                <td>${product.productId}</td>
-                <td>${product.unitPrice}</td>
-                <td>${product.quantity}</td>
-                <td>${product.totalPrice}</td>
-                <td>${product.description}</td>
+              <td>${product._id}</td>
+              <td>${product.name}</td>
+              <td>${product.email}</td>
             </tr>
           `
         })
@@ -117,12 +109,12 @@ function renderTable(pageCount, apiUrl) {
     } else {
       tableContent += `
         <tr>
-            <td>Nada</td>
-            <td>Nada</td>
-            <td>Nada</td>
-            <td>Nada</td>
-            <td>Nada</td>
-            <td>Nada</td>
+          <th>Nada</th>
+          <th>Nada</th>
+          <th>Nada</th>
+          <th>Nada</th>
+          <th>Nada</th> 
+          <th>Nada</th>
         </tr>
       `
     }

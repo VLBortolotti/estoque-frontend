@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="../img/earth.png">
+    <link rel="stylesheet" href="../css/listProducts.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Listar Usuários</title>
+</head>
+
+<body>
+    <div class="sidenav">
+        <a id="userName"></a>
+
+        <button class="dropdown-btn">Compras 
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-container">
+            <a href="./registerPurchase.html">Cadastrar</a>
+            <a href="./listPurchases.html">Listar</a>
+        </div>
+
+        <button class="dropdown-btn produtos-container">Produtos 
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-container">
+            <a href="./registerProduct.html">Cadastrar</a>
+            <a href="./listProducts.html">Listar</a>
+            <a href="./editProduct.html">Editar</a>
+        </div>
+
+        <button class="dropdown-btn">Vendas
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-container">
+            <a href="./registerSale.html">Cadastrar</a>
+            <a href="./listSales.html">Listar</a>
+        </div>
+
+        <button class="dropdown-btn usuarios-container">Usuários
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-container">
+            <a href="./listUsers.html" id="paginaAtiva">Listar</a>
+        </div>
+
+        <a id="sair">Sair</a>
+
+    </div>
+
+    <div class="main">
+        <h2>Lista de Usuários</h2>
+        
+        <div id="filter-search">
+            <label for="key-search">Buscar pela chave</label>
+            <select id="key-search" name="key-search">
+                <option value="">Todos</option>
+                <option value="_id">Identificador</option>
+                <option value="name">Nome</option>
+                <option value="email">Email</option>
+            </select>
+
+            <label for="input-search">com valor</label>
+            <input type="text" id="input-search" placeholder="valor (em branco para buscar todos)">
+
+            <button id="btn-search">Buscar</button>
+        </div>
+        
+        <div id="currentPage"></div>
+        <div id="tabela"></div>
+        <div class="pagination"></div>
+
+    </div>
+    
+<script src="../js/listUsers.js"></script>
+
+</body>
+</html> 
